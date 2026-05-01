@@ -3,6 +3,7 @@
 
         private String nome;
         private int id;
+        private Fornecedor fornecedor;
         private String categoria;
         private double valor;
         private double peso;
@@ -96,5 +97,13 @@
 
         public double getPeso() {
             return peso;
+        }
+
+        public Fornecedor getFornecedor() {
+            return fornecedor;
+        }
+
+        public void setFornecedor(Fornecedor fornecedor) {
+            this.fornecedor = fornecedor;
         }
     }

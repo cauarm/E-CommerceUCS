@@ -34,15 +34,24 @@ public class Fornecedor {
     }
 
     public void incluirProduto(Produto prod){
+        if(prod==null){
+            System.out.println("Produto inválido.\n");
+            return;
+        }
+
         listaProdutos.add(prod);
+        prod.setFornecedor(this);
     }
 
     public void excluirProduto(int id){
-        for(Produto p : listaProdutos){
-            if(p.getId() == id){
-                listaProdutos.remove(p);
-                break;
-            }
+        Produto produto = buscaProdutoID(id);
+
+        if(produto != null){
+            listaProdutos.remove(produto);
+            produto.setFornecedor(null);
+            System.out.println("Produto excluído com sucesso.\n");
+        }else{
+            System.out.println("Produto não encontrado.\n");
         }
     }
 
@@ -52,12 +61,51 @@ public class Fornecedor {
                 return p;
             }
         }
+        return null;
+    }
+
+    public Produto buscarProdutoNome(String nome){
+
+        if( nome==null){
+            return null;
+        }
+        for(Produto p : listaProdutos){
+            if(p.getNome().equalsIgnoreCase(nome)){
+                return p;
+            }
+        }
 
         return null;
     }
 
-    public void alterarProduto(int id){
-
+    public void listarProdutos(){
+        for(Produto p : listaProdutos){
+            System.out.printf("ID: %d | Nome: %s | Categoria: %s | Valor: %.2f | Peso: %.2f\n",
+            p.getId(), p.getNome(), p.getCategoria(), p.getValor(), p.getPeso());
+        }
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
 }
