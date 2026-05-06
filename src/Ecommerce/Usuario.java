@@ -20,8 +20,8 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "login='" + login + '\'' +
-                '}';
+        return "Login: " + getLogin();
     }
+
+
 }

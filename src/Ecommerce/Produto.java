@@ -112,16 +112,15 @@
 
             String nomeFornecedor = "Sem fornecedor";
 
-            if(fornecedor!=null){
+            if(fornecedor != null){
                 nomeFornecedor = fornecedor.getNome();
             }
-            return "Produto{" +
-                    "nome='" + nome + '\'' +
-                    ", id=" + id +
-                    ", fornecedor=" + nomeFornecedor +
-                    ", categoria='" + categoria + '\'' +
-                    ", valor=" + valor +
-                    ", peso=" + peso +
-                    '}';
+
+            return "ID: " + id +
+                    " | Nome: " + nome +
+                    " | Categoria: " + categoria +
+                    " | Valor: R$" + valor +
+                    " | Peso: " + peso + "kg" +
+                    " | Fornecedor: " + nomeFornecedor;
         }
     }

@@ -86,9 +86,7 @@ public class Transportadora {
 
     @Override
     public String toString() {
-        return "Transportadora{" +
-                "nome='" + nome + '\'' +
-                ", id=" + id +
-                '}';
+        return "ID: " + id +
+                " | Nome: " + nome;
     }
 }

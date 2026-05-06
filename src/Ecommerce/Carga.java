@@ -85,12 +85,11 @@ public class Carga {
 
         String nomeTransportadora = "Sem transportadora";
 
-        if(transportadora!=null){
+        if(transportadora != null){
             nomeTransportadora = transportadora.getNome();
         }
-        return "Carga{" +
-                "id=" + id +
-                ", transportadora=" + nomeTransportadora +
-                '}';
+
+        return "Carga ID: " + id +
+                " | Transportadora: " + nomeTransportadora;
     }
 }
