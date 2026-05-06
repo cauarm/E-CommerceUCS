@@ -32,11 +32,36 @@ public class Carga {
         listaProd.add(prod);
     }
 
-    public void listarProd(){
-        for(Produto p : listaProd){
-            System.out.printf("ID: %d | Nome: %s | Categoria: %s | Valor: %.2f | Peso: %.2f\n",
-                    p.getId(), p.getNome(), p.getCategoria(), p.getValor(), p.getPeso());
+    public void removerProduto(int id){
+        Produto produto = buscaProdutoID(id);
+
+        if(produto!=null){
+            listaProd.remove(produto);
+            System.out.println("Produto removido da carga com sucesso.");
+        }else{
+            System.out.println("Produto não encontrado.");
+            return;
         }
+    }
+
+    public Produto buscaProdutoID(int id){
+        for(Produto p : listaProd){
+            if(p.getId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void listarProdutos(){
+        for(Produto p : listaProd){
+            System.out.printf("ID: %d | Nome: %s | Categoria: %s | Valor: %.2f | Peso: %.2f | Fornecedor: %s\n",
+                    p.getId(), p.getNome(), p.getCategoria(), p.getValor(), p.getPeso(), p.getFornecedor().getNome());
+        }
+    }
+
+    public ArrayList<Produto> getListaProd() {
+        return listaProd;
     }
 
     public Transportadora getTransportadora() {
@@ -44,10 +69,28 @@ public class Carga {
     }
 
     public void setTransportadora(Transportadora transportadora) {
+        if(transportadora==null){
+            System.out.println("Transportadora inválida.");
+            return;
+        }
         this.transportadora = transportadora;
     }
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+
+        String nomeTransportadora = "Sem transportadora";
+
+        if(transportadora!=null){
+            nomeTransportadora = transportadora.getNome();
+        }
+        return "Carga{" +
+                "id=" + id +
+                ", transportadora=" + nomeTransportadora +
+                '}';
     }
 }

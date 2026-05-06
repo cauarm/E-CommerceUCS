@@ -105,7 +105,20 @@ public class Fornecedor {
         return nacionalidade;
     }
 
+    public ArrayList<Produto> getListaProdutos() {
+        return listaProdutos;
+    }
+
     public void setNacionalidade(String nacionalidade) {
         this.nacionalidade = nacionalidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Fornecedor{" +
+                "nome='" + nome + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", nacionalidade='" + nacionalidade + '\'' +
+                '}';
     }
 }

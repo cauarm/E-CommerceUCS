@@ -11,6 +11,7 @@ public class Transportadora {
     public Transportadora(String nome, int id){
         if(nome == null || nome.trim().isEmpty()){
             System.out.println("Nome inválido.\n");
+            this.nome = "Sem nome";
         }else{
             this.nome = nome;
         }
@@ -39,7 +40,6 @@ public class Transportadora {
 
         if(carga!=null){
             listaCargas.remove(carga);
-            carga.setTransportadora(null);
             System.out.printf("Carga removida com sucesso.\n");
         }else{
             System.out.printf("Carga não encontrada.\n");
@@ -57,11 +57,26 @@ public class Transportadora {
         return null;
     }
 
+    public ArrayList<Carga> getListaCargas() {
+        return listaCargas;
+    }
+
+    public void listarCargas(){
+
+        for(Carga c : listaCargas){
+            System.out.println(c);
+        }
+    }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
+        if(nome==null || nome.trim().isEmpty()){
+            System.out.println("Nome inválido.\n");
+            return;
+        }
         this.nome = nome;
     }
 
@@ -69,4 +84,11 @@ public class Transportadora {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Transportadora{" +
+                "nome='" + nome + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

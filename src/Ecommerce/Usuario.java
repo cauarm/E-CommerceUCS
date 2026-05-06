@@ -10,7 +10,18 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
-    public void logar(){
-        System.out.printf("O usuario %s logou.\n", login);
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "login='" + login + '\'' +
+                '}';
     }
 }

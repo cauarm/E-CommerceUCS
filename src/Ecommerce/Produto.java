@@ -46,7 +46,7 @@
         }
 
         public void setNome(String nome){
-            if(nome.trim().isEmpty() || nome == null){
+            if(nome==null || nome.trim().isEmpty()){
                 System.out.println("Nome inválido.");
                 return;
             }
@@ -54,7 +54,7 @@
         }
 
         public void setCategoria(String categoria){
-            if(categoria.trim().isEmpty() || categoria == null){
+            if(categoria==null || categoria.trim().isEmpty()){
                 System.out.println("Categoria inválida.");
                 return;
             }
@@ -105,5 +105,23 @@
 
         public void setFornecedor(Fornecedor fornecedor) {
             this.fornecedor = fornecedor;
+        }
+
+        @Override
+        public String toString() {
+
+            String nomeFornecedor = "Sem fornecedor";
+
+            if(fornecedor!=null){
+                nomeFornecedor = fornecedor.getNome();
+            }
+            return "Produto{" +
+                    "nome='" + nome + '\'' +
+                    ", id=" + id +
+                    ", fornecedor=" + nomeFornecedor +
+                    ", categoria='" + categoria + '\'' +
+                    ", valor=" + valor +
+                    ", peso=" + peso +
+                    '}';
         }
     }
