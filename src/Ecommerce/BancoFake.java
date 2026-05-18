@@ -15,7 +15,7 @@ public class BancoFake {
 
     private void carregarDados() {
         // Usuários
-        usuarios.add(new Administrador("admin", "123"));
+        usuarios.add(new Administrador("pedro", "123"));
         usuarios.add(new Administrador("caua", "123"));
 
         // Fornecedores
