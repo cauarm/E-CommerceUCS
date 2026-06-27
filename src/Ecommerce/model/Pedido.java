@@ -74,6 +74,20 @@ public class Pedido {
         dataCancelamento = LocalDate.now();
     }
 
+    public void adicionarItemArquivo(Produto produto, int quantidade) {
+        if (produto == null) {
+            System.out.println("Produto inválido.");
+            return;
+        }
+
+        if (quantidade <= 0) {
+            System.out.println("Quantidade inválida.");
+            return;
+        }
+
+        itens.add(new ItemPedido(produto, quantidade));
+    }
+
     public void listarDetalhes() {
         System.out.println("Pedido nº " + numero);
 

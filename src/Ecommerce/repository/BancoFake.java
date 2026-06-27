@@ -19,7 +19,10 @@ public class BancoFake {
     private HashMap<Integer, Pedido> pedidosPorNumero = new HashMap<Integer, Pedido>();
 
     public BancoFake() {
-        carregarDados();
+        if(!carregarArquivos()){
+            carregarDados();
+            salvarArquivos();
+        }
     }
 
     private void carregarDados() {
@@ -175,6 +178,61 @@ public class BancoFake {
         } catch (EstoqueInsuficienteException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private boolean carregarArquivos(){
+        ArquivoUsuario arqUsuario = new ArquivoUsuario();
+        ArquivoProduto arqProduto = new ArquivoProduto();
+        ArquivoFornecedor arqFornecedor = new ArquivoFornecedor();
+        ArquivoTransportadora arqTransportadora = new ArquivoTransportadora();
+        ArquivoPedido arqPedido = new ArquivoPedido();
+        ArquivoCarga arqCarga = new ArquivoCarga();
+
+        usuarios = arqUsuario.carregarUsuarios();
+        fornecedores = arqFornecedor.carregarFornecedores();
+        transportadoras = arqTransportadora.carregarTransportadoras();
+
+        ArrayList<Produto> produtos = arqProduto.carregarProdutos(fornecedores);
+
+        if(usuarios.isEmpty() || produtos.isEmpty()){
+            return false;
+        }
+
+        for(Usuario u : usuarios){
+            usuariosPorLogin.put(u.getLogin(), u);
+        }
+
+        for(Produto p : produtos){
+            produtosPorId.put(p.getId(), p);
+        }
+
+        cargas = arqCarga.carregarCargas(transportadoras, produtosPorId);
+
+        pedidos = arqPedido.carregarPedidos(usuariosPorLogin, produtosPorId);
+
+        for(Pedido p : pedidos){
+            pedidosPorNumero.put(p.getNumero(), p);
+        }
+
+        return true;
+    }
+
+    public void salvarArquivos(){
+        ArquivoUsuario arqUsuario = new ArquivoUsuario();
+        ArquivoProduto arqProduto = new ArquivoProduto();
+        ArquivoFornecedor arqFornecedor = new ArquivoFornecedor();
+        ArquivoTransportadora arqTransportadora = new ArquivoTransportadora();
+        ArquivoPedido arqPedido = new ArquivoPedido();
+        ArquivoCarga arqCarga = new ArquivoCarga();
+
+        ArrayList<Produto> todosProdutos = new ArrayList<Produto>(produtosPorId.values());
+
+        arqUsuario.salvarUsuarios(usuarios);
+        arqFornecedor.salvarFornecedores(fornecedores);
+        arqProduto.salvarProdutos(todosProdutos);
+        arqTransportadora.salvarTransportadoras(transportadoras);
+        arqPedido.salvarPedidos(pedidos);
+        arqCarga.salvarCargas(cargas);
     }
 
     public void adicionarUsuario(Usuario usuario) {

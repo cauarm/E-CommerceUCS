@@ -95,6 +95,12 @@ public class Carrinho {
     }
 
     public void listarItens() {
+
+        if(itens.isEmpty()){
+            System.out.println("Carrinho vazio.");
+            return;
+        }
+
         for (ItemCarrinho item : itens.values()) {
             System.out.println(item);
         }

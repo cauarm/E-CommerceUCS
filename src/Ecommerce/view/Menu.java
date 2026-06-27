@@ -1,9 +1,9 @@
 package Ecommerce.view;
-
+import Ecommerce.repository.*;
+import Ecommerce.model.*;
 import Ecommerce.exception.EstoqueInsuficienteException;
 import Ecommerce.model.*;
 import Ecommerce.repository.BancoFake;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -59,6 +59,8 @@ public class Menu {
             System.out.println("6 - Cancelar pedido");
             System.out.println("7 - Buscar pedidos por data");
             System.out.println("8 - Buscar pedidos por intervalo de datas");
+            System.out.println("9 - Salvar dados em arquivos");
+            System.out.println("10 - Carregar dados dos arquivos");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
 
@@ -89,6 +91,13 @@ public class Menu {
                     break;
                 case 8:
                     buscarPedidosPorIntervalo();
+                    break;
+                case 9:
+                    salvarDadosArquivos();
+                    break;
+
+                case 10:
+                    carregarDadosArquivos();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -306,6 +315,8 @@ public class Menu {
         }
     }
 
+
+
     public void buscarPedidosPorIntervalo(){
         System.out.print("Data inicial (AAAA-MM-DD): ");
         String dataInicialTexto = sc.nextLine();
@@ -325,6 +336,61 @@ public class Menu {
                 p.listarDetalhes();
                 System.out.println();
             }
+        }
+    }
+
+    public void salvarDadosArquivos(){
+        ArquivoProduto arqProduto = new ArquivoProduto();
+        ArquivoUsuario arqUsuario = new ArquivoUsuario();
+        ArquivoFornecedor arqFornecedor = new ArquivoFornecedor();
+        ArquivoTransportadora arqTransportadora = new ArquivoTransportadora();
+        ArquivoPedido arqPedido = new ArquivoPedido();
+
+        ArrayList<Produto> todosProdutos = new ArrayList<Produto>();
+
+        for(Fornecedor f : bf.getFornecedores()){
+            todosProdutos.addAll(f.getListaProdutos());
+        }
+
+        arqProduto.salvarProdutos(todosProdutos);
+        arqUsuario.salvarUsuarios(bf.getUsuarios());
+        arqFornecedor.salvarFornecedores(bf.getFornecedores());
+        arqTransportadora.salvarTransportadoras(bf.getTransportadoras());
+        arqPedido.salvarPedidos(bf.getPedidos());
+    }
+
+    public void carregarDadosArquivos(){
+        ArquivoProduto arqProduto = new ArquivoProduto();
+        ArquivoUsuario arqUsuario = new ArquivoUsuario();
+        ArquivoFornecedor arqFornecedor = new ArquivoFornecedor();
+        ArquivoTransportadora arqTransportadora = new ArquivoTransportadora();
+        ArquivoPedido arqPedido = new ArquivoPedido();
+        ArrayList<Fornecedor> fornecedoresCarregados = arqFornecedor.carregarFornecedores();
+
+        System.out.println("==== PRODUTOS CARREGADOS ====");
+        for(Produto p : arqProduto.carregarProdutos(fornecedoresCarregados)){
+            System.out.println(p);
+        }
+
+        System.out.println("==== USUÁRIOS CARREGADOS ====");
+        for(Usuario u : arqUsuario.carregarUsuarios()){
+            System.out.println(u);
+        }
+
+        System.out.println("==== FORNECEDORES CARREGADOS ====");
+        for(Fornecedor f : arqFornecedor.carregarFornecedores()){
+            System.out.println(f);
+        }
+
+        System.out.println("==== TRANSPORTADORAS CARREGADAS ====");
+        for(Transportadora t : arqTransportadora.carregarTransportadoras()){
+            System.out.println(t);
+        }
+
+        System.out.println("==== PEDIDOS CARREGADOS ====");
+        for(Pedido p : arqPedido.carregarPedidos(bf.getUsuariosPorLogin(), bf.getProdutosPorId())){
+            p.listarDetalhes();
+            System.out.println();
         }
     }
 
