@@ -1,0 +1,3 @@
+ADMIN;admin;clebermachado
+CLIENTE;caua;43673246;Cauã
+CLIENTE;pedro;int1c35;Pedro

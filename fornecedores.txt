@@ -1,0 +1,3 @@
+TechMax;Eletrônicos;Brasil
+CasaBella;Casa e Decoração;Brasil
+SportLife;Esportes;Brasil

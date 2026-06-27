@@ -1,0 +1,21 @@
+1;Mouse Gamer;Eletrônicos;120.0;0.3;Mouse gamer com iluminação RGB;18;TechMax
+2;Teclado Mecânico;Eletrônicos;250.0;0.8;Teclado mecânico ABNT2;14;TechMax
+3;Monitor LED;Eletrônicos;899.9;3.5;Monitor LED Full HD 24 polegadas;10;TechMax
+4;Headset;Eletrônicos;180.0;0.4;Headset gamer com microfone;18;TechMax
+5;Webcam;Eletrônicos;150.0;0.2;Webcam HD para chamadas;12;TechMax
+6;Notebook;Eletrônicos;3500.0;2.2;Notebook para estudos e trabalho;6;TechMax
+7;Caixa de Som;Eletrônicos;99.9;0.6;Caixa de som bluetooth;25;TechMax
+8;Sofá;Móveis;1200.0;40.0;Sofá de três lugares;3;CasaBella
+9;Mesa de Jantar;Móveis;850.0;30.0;Mesa de jantar em madeira;5;CasaBella
+10;Cadeira;Móveis;150.0;5.0;Cadeira acolchoada;20;CasaBella
+11;Luminária;Decoração;90.0;1.2;Luminária de mesa;14;CasaBella
+12;Tapete;Decoração;200.0;3.0;Tapete para sala;8;CasaBella
+13;Estante;Móveis;600.0;25.0;Estante para livros;7;CasaBella
+14;Cortina;Decoração;130.0;1.5;Cortina blackout;14;CasaBella
+15;Bola de Futebol;Esportes;80.0;0.45;Bola oficial de futebol;29;SportLife
+16;Tênis de Corrida;Esportes;300.0;0.8;Tênis leve para corrida;10;SportLife
+17;Camiseta Esportiva;Esportes;70.0;0.2;Camiseta dry fit;40;SportLife
+18;Halteres;Esportes;120.0;10.0;Par de halteres de 5kg;9;SportLife
+19;Mochila Esportiva;Esportes;160.0;0.9;Mochila para academia;13;SportLife
+20;Luva de Academia;Esportes;45.0;0.1;Luva para musculação;19;SportLife
+21;Garrafa Térmica;Esportes;55.0;0.3;Garrafa térmica 750ml;16;SportLife
